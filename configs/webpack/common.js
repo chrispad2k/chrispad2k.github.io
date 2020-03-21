@@ -1,13 +1,25 @@
 // shared config (dev and prod)
-const {resolve} = require('path');
+const path = require('path');
 const {CheckerPlugin} = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const root = path.join(__dirname, '../../')
+
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: path.join(root, 'public/index.html'),
+  filename: 'index.html',
+  inject: 'body'
+});
+
 module.exports = {
+  entry: path.join(root, 'src', 'index.tsx'),
+  output: {
+    filename: 'bundle.[hash].js'
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-  context: resolve(__dirname, '../../src'),
+  context: path.resolve(__dirname, '../..'),
   module: {
     rules: [
       {
@@ -34,12 +46,6 @@ module.exports = {
           },
           {
             loader: 'less-loader',
-            options: {
-              lessOptions: {
-                strictMath: true,
-                noIeCompat: true,
-              },
-            },
           },
         ],
       },
@@ -54,13 +60,10 @@ module.exports = {
   },
   plugins: [
     new CheckerPlugin(),
-    new HtmlWebpackPlugin(),
+    HTMLWebpackPluginConfig,
   ],
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
-  },
-  performance: {
-    hints: false,
   },
 };
