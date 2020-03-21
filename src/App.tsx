@@ -16,10 +16,10 @@ const lorem = new LoremIpsum({
 function App() {
   return (
     <div className='app'>
-      <div className='header area' id='#header' />
-      <div className='sidebar area' id='#sidebar' />
-      <div className='main area'>{ lorem.generateParagraphs(20) }</div>
-      <div className='footer area' />
+      <div className='header area' id='header' />
+      <div className='sidebar area' id='sidebar' />
+      <div className='main area' id='main'>{ lorem.generateParagraphs(20) }</div>
+      <div className='footer area' id='footer' />
     </div>
   );
 }
