@@ -5,21 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const root = path.join(__dirname, '../../')
 
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.join(root, 'public/index.html'),
-  filename: 'index.html',
-  inject: 'body'
-});
-
 module.exports = {
-  entry: path.join(root, 'src', 'index.tsx'),
+  entry: './index.tsx',
+  context: path.resolve(__dirname, '../../src'),
   output: {
     filename: 'bundle.[hash].js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-  context: path.resolve(__dirname, '../..'),
   module: {
     rules: [
       {
@@ -60,7 +54,7 @@ module.exports = {
   },
   plugins: [
     new CheckerPlugin(),
-    HTMLWebpackPluginConfig,
+    new HtmlWebpackPlugin({template: path.join(root, 'public/index.html')}),
   ],
   externals: {
     'react': 'React',
