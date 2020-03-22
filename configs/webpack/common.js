@@ -40,10 +40,6 @@ module.exports = {
           'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false',
         ],
       },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader',
-      },
     ],
   },
   plugins: [
