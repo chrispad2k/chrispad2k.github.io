@@ -15,13 +15,18 @@ const lorem = new LoremIpsum({
 
 function App() {
   return (
-    <div className="app">
-      <div className="header area" id="header" />
-      <div className="sidebar area" id="sidebar" />
-      <div className="main area" id="main">
-        {lorem.generateParagraphs(20)}
+    <div className='app'>
+      <div className='header area' id='header'>
+        <div className='header-back' />
+        <h1>Christoph Pader</h1>
       </div>
-      <div className="footer area" id="footer" />
+      {/* <div className='sidebar area' id='sidebar' /> */}
+      <div className='main area' id='main'>
+        <p>{lorem.generateParagraphs(5)}</p>
+
+        <p>{lorem.generateParagraphs(5)}</p>
+      </div>
+      <div className='footer area' id='footer' />
     </div>
   )
 }

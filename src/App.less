@@ -1,66 +1,90 @@
 .app {
   display: grid;
-  height: 100vh;
   padding: 10px;
 
   grid-template-columns: repeat(9, 1fr);
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: 1000px minmax(100px, auto) 5em;
   grid-template-areas:
-    "hd hd hd   hd   hd   hd   hd   hd   hd"
-    "sd sd main main main main main main main"
-    "ft ft ft   ft   ft   ft   ft   ft   ft";
+    'hd hd hd   hd   hd   hd   hd   hd   hd'
+    'main main main main main main main main main'
+    'ft ft ft   ft   ft   ft   ft   ft   ft';
 
   gap: 10px 10px;
 
-  background: #FF6600;
+  background: white;
+  font-family: 'Montserrat';
+
+  h1 {
+  }
+
+  h2 {
+  }
+
+  h3 {
+  }
+
+  p {
+  }
 
   .area {
     padding: 10px;
 
-    overflow: scroll;
+    border: 1px dotted black;
   }
 
   .header {
     grid-area: hd;
 
-    background: blue;
+    text-align: center;
+
+    background:
+      url('../public/assets/header-front.svg')
+      bottom center / 100%
+      auto no-repeat;
+  }
+
+  .header-back {
+    grid-area: hd;
+
+    text-align: center;
+
+    background: url('../public/assets/header-back.svg') bottom center / 100%
+      auto no-repeat;
   }
 
   .sidebar {
     grid-area: sd;
-    background: red;
   }
 
   .main {
     grid-area: main;
-    background: lightgreen;
+    overflow-y: scroll;
   }
 
   .footer {
     grid-area: ft;
-    background: purple;
   }
 }
 
-@media(max-width: 1200px) {
+@media (max-width: 1200px) {
   .app {
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-template-areas:
-      "hd hd   hd   hd   hd   hd"
-      "sd main main main main main"
-      "ft ft   ft   ft   ft   ft";
+      'hd hd   hd   hd   hd   hd'
+      'sd main main main main main'
+      'ft ft   ft   ft   ft   ft';
   }
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .app {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-template-areas:
-      "hd   hd   hd"
-      "sd   sd   sd"
-      "main main main "
-      "ft   ft   ft";
+      'hd   hd   hd'
+      'sd   sd   sd'
+      'main main main '
+      'ft   ft   ft';
   }
 }
