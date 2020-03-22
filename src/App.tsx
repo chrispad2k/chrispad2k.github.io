@@ -1,6 +1,8 @@
 import React from 'react'
 import { LoremIpsum } from 'lorem-ipsum'
 import './App.less'
+import circleLeft from '../public/images/circle-left.svg';
+import circleRight from '../public/images/circle-right.svg';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -16,17 +18,32 @@ const lorem = new LoremIpsum({
 function App() {
   return (
     <div className='app'>
-      <div className='header area' id='header'>
-        <div className='header-back' />
-        <h1>Christoph Pader</h1>
+      <div className='header' id='header'>
+        <img className='circle-left' src={circleLeft} />
+        <img className='circle-right' src={circleRight} />
+
+        <h1 className='logo'>Christoph Pader</h1>
+
+        <nav>
+          <ul>
+            <li><a href='#'>Home</a></li>
+            <li><a href='#'>About Me</a></li>
+            <li><a href='#'>Contact</a></li>
+          </ul>
+        </nav>
+
+        <div className='text'>
+          <h2>Software Developer</h2>
+          <p>{lorem.generateParagraphs(2)}</p>
+        </div>
       </div>
-      {/* <div className='sidebar area' id='sidebar' /> */}
-      <div className='main area' id='main'>
+      {/* <div className='sidebar' id='sidebar' /> */}
+      <div className='main' id='main'>
         <p>{lorem.generateParagraphs(5)}</p>
 
         <p>{lorem.generateParagraphs(5)}</p>
       </div>
-      <div className='footer area' id='footer' />
+      <div className='footer' id='footer' />
     </div>
   )
 }
