@@ -9,7 +9,7 @@ module.exports = {
   entry: './index.tsx',
   context: path.resolve(__dirname, '../../src'),
   output: {
-    filename: 'bundle.[hash].js'
+    filename: 'bundle.[hash].min.js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -46,6 +46,7 @@ module.exports = {
     new CheckerPlugin(),
     new HtmlWebpackPlugin({template: path.join(root, 'public/index.html')}),
   ],
+  devtool: 'source-map',
   externals: {
     'React': 'React',
     'ReactDOM': 'ReactDOM',

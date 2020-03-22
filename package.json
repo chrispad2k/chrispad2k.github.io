@@ -24,10 +24,19 @@
     "@types/react": "^16.9.25",
     "@types/react-bootstrap": "^0.32.20",
     "@types/react-dom": "^16.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
     "bootstrap": "^4.4.1",
     "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^3.2.0",
@@ -37,7 +46,7 @@
     "less-loader": "^5.0.0",
     "lorem-ipsum": "^2.0.3",
     "node-sass": "^4.13.1",
-    "react": "^16.13.1",
+    "prettier": "^2.0.1",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
@@ -53,5 +62,7 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.13.1"
+  }
 }
