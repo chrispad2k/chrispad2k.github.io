@@ -1,8 +1,8 @@
 import React from 'react'
 import { LoremIpsum } from 'lorem-ipsum'
 import './App.less'
-import circleLeft from '../public/images/circle-left.svg';
-import circleRight from '../public/images/circle-right.svg';
+import circleLeft from '../../public/images/circle-left.svg';
+import circleRight from '../../public/images/circle-right.svg';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -22,19 +22,21 @@ function App() {
         <img className='circle-left' src={circleLeft} />
         <img className='circle-right' src={circleRight} />
 
-        <h1 className='logo'>Christoph Pader</h1>
+        <div className='top'>
+          <h1 className='logo'>Christoph Pader</h1>
 
-        <nav>
-          <ul>
-            <li><a href='#'>Home</a></li>
-            <li><a href='#'>About Me</a></li>
-            <li><a href='#'>Contact</a></li>
-          </ul>
-        </nav>
+          <nav>
+            <ul>
+              <li><a href='#'>Home</a></li>
+              <li><a href='#'>About Me</a></li>
+              <li><a href='#'>Contact</a></li>
+            </ul>
+          </nav>
+        </div>
 
         <div className='text'>
           <h2>Software Developer</h2>
-          <p>{lorem.generateParagraphs(2)}</p>
+          <p>{lorem.generateParagraphs(1)}</p>
         </div>
       </div>
       {/* <div className='sidebar' id='sidebar' /> */}
