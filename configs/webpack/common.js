@@ -2,6 +2,7 @@
 const path = require('path');
 const {CheckerPlugin} = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const GoogleFontsPlugin = require('google-fonts-plugin')
 
 const root = path.join(__dirname, '../../')
 
@@ -34,17 +35,25 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]',
-          'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false',
-        ],
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[hash].[ext]'
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[hash].[ext]'
+        }
       },
     ],
   },
   plugins: [
     new CheckerPlugin(),
     new HtmlWebpackPlugin({template: path.join(root, 'public/index.html')}),
+    // new GoogleFontsPlugin(),
   ],
   devtool: 'source-map',
   externals: {
