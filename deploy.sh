@@ -3,7 +3,7 @@
 LAST_COMMIT=`git log -1 --pretty=%B`
 PUBLISH_REPO="chrispad2k.github.io/"
 
-rm $PUBLISH_REPO/*
+rm -rf $PUBLISH_REPO/*
 mv -f build/* $PUBLISH_REPO
 rm -rf build/
 
