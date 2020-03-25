@@ -16,9 +16,4 @@
   "include": [
     "./src/**/*"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "reportFiles": [
-      "./src/**/*"
-    ]
-  }
 }
