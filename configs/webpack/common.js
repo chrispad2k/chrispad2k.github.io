@@ -1,8 +1,5 @@
-// shared config (dev and prod)
 const path = require('path');
-const {CheckerPlugin} = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const GoogleFontsPlugin = require('google-fonts-plugin')
 
 const root = path.join(__dirname, '../../')
 
@@ -19,12 +16,12 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader', 'source-map-loader'],
+        use: ['babel-loader'],
         exclude: /node_modules/,
       },
       {
         test: /\.tsx?$/,
-        use: ['babel-loader', 'awesome-typescript-loader'],
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
@@ -51,9 +48,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CheckerPlugin(),
     new HtmlWebpackPlugin({template: path.join(root, 'public/index.html')}),
-    // new GoogleFontsPlugin(),
   ],
   devtool: 'source-map',
   externals: {

@@ -26,7 +26,6 @@
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
     "bootstrap": "^4.4.1",
     "css-loader": "^3.4.2",
