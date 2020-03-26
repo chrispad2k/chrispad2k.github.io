@@ -11,19 +11,34 @@
     'main main main main main main main main main'
     'ft ft ft   ft   ft   ft   ft   ft   ft';
 
-  @bg-width: 1920px;
-  @bg-height: 886px;
+  @page-padding-horizontal: 100px;
+  @page-padding-vertical: 100px;
+
   .height-relative(@width, @height) {
     @result: 100vw * (@height/@width);
   }
 
+  svg.curve {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+
+    path {
+      fill: @color-background;
+      height: 100%;
+    }
+  }
+
   .header {
     grid-area: hd;
-    text-align: center;
     background: url('../../public/images/bg.svg') no-repeat;
     background-size: 100% auto;
-    background-position: right 0;
+    overflow: hidden;
 
+    @bg-width: 1920px;
+    @bg-height: 886px;
     @padding-top: 50px;
     padding-top: @padding-top;
 
@@ -104,9 +119,6 @@
     grid-area: sd;
   }
 
-  @page-padding-horizontal: 100px;
-  @page-padding-vertical: 100px;
-
   .main {
     grid-area: main;
 
@@ -115,8 +127,9 @@
 
     section {
       padding-top: @section-padding-vertical;
-      @curve-height: 100px;
+      @curve-height: 200px;
       text-align: justify;
+      overflow: hidden;
 
       .content > * {
         width: 70%;
@@ -142,33 +155,16 @@
 
       &#projects {
         .right();
-        padding-bottom: @curve-height;
 
-        svg {
-          display: block;
-          z-index: 5;
-          width: 100%;
+        svg.curve {
           height: @curve-height;
-
-          path {
-            fill: @color-background;
-            height: 100%;
-          }
-
-          &.bg-top {
-            transform: scale(-1);
-          }
-
-          &.bg-bottom {
-            float: right;
-          }
         }
 
         .content {
           .light();
           background: linear-gradient(41deg, @color-primary-darker, @color-primary);
           padding-top: 150px;
-          padding-bottom: 150px;
+          padding-bottom: 200px;
           margin-top: -@curve-height;
           margin-bottom: -@curve-height;
 
@@ -186,8 +182,9 @@
 
   .footer {
     grid-area: ft;
-    @curve-height: 100px;
-    padding-top: @curve-height;
+    @curve-height: 154px;
+    padding-top: 100px;
+    overflow: hidden;
 
     .content {
       display: grid;
@@ -197,7 +194,7 @@
       column-gap: 50px;
       padding: @page-padding-vertical @page-padding-horizontal;
       background: linear-gradient(41deg, @color-primary, @color-primary-lighter);
-      padding-top: 170px;
+      padding-top: 250px;
       margin-top: -@curve-height;
 
       .left {
@@ -213,20 +210,8 @@
       }
     }
 
-    svg {
-      display: block;
-      z-index: 5;
-      width: 100%;
+    svg.curve {
       height: @curve-height;
-
-      path {
-        fill: @color-background;
-        height: 100%;
-      }
-
-      &.bg-top {
-        transform: scale(-1);
-      }
     }
   }
 }
@@ -241,6 +226,12 @@
       'main main main main main main'
       'ft   ft   ft   ft   ft   ft';
 
+    .header {
+      .text {
+        visibility: hidden;
+      }
+    }
+
     .main {
       section {
         .content > * {
@@ -248,7 +239,7 @@
         }
 
         h2 {
-          text-align: left;
+          text-align: left !important;
         }
       }
     }
@@ -265,13 +256,33 @@
       'main main main '
       'ft   ft   ft';
 
+    @page-padding-horizontal: 50px;
+    @page-padding-vertical: 50px;
+
+    .main {
+      @section-padding-horizontal: @page-padding-horizontal;
+      @section-padding-vertical: @page-padding-vertical;
+
+      section {
+        padding-top: @section-padding-vertical;
+
+        .content > * {
+          padding: 0 @section-padding-horizontal;
+        }
+      }
+    }
+
     .footer {
-      grid-template-columns: auto;
-      grid-template-rows: auto;
-      grid-template-areas:
-        'left'
-        'center'
-        'right';
+      .content {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+          'left'
+          'center'
+          'right';
+        padding: @page-padding-vertical @page-padding-horizontal;
+        padding-top: 200px;
+      }
     }
   }
 }

@@ -1,9 +1,12 @@
 import React from 'react'
 import { LoremIpsum } from 'lorem-ipsum'
 import './App.less'
-import links from '../links.json'
-import circleLeft from '../../public/images/circle-left.svg'
-import circleRight from '../../public/images/circle-right.svg'
+import content from '../content'
+import CircleLeft from '../../public/images/circle-left.svg'
+import CircleRight from '../../public/images/circle-right.svg'
+import MainWaveTop from '../../public/images/main-wave-top.svg'
+import MainWaveBottom from '../../public/images/main-wave-bottom.svg'
+import FooterWave from '../../public/images/footer-wave.svg'
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -31,10 +34,10 @@ class App extends React.Component {
     return (
       <div className='app'>
         <section className='header' id='header'>
-          <img className='circle-left' src={circleLeft} />
-          <img className='circle-right' src={circleRight} />
+          <CircleLeft className='circle-left' />
+          <CircleRight className='circle-right' />
 
-          <h1 className='logo'>Christoph Pader</h1>
+          <h1 className='logo'>{content.header.logo}</h1>
 
           <nav>
             <ul>
@@ -45,8 +48,8 @@ class App extends React.Component {
           </nav>
 
           <div className='text'>
-            <h2>Software Developer</h2>
-            <p>{lorem.generateSentences(3)}</p>
+            <h2>{content.header.intro.header}</h2>
+            <p>{content.header.intro.text}</p>
           </div>
         </section>
         {/* <div className='sidebar' id='sidebar' /> */}
@@ -54,23 +57,19 @@ class App extends React.Component {
           <section id='about'>
             <div className='content'>
               <h2>About Me</h2>
-              <p>{lorem.generateParagraphs(3)}</p>
+              <p>{content.main.about.text}</p>
             </div>
           </section>
 
           <section id='projects'>
-            <svg xmlns='http://www.w3.org/2000/svg'className='bg-top' viewBox='0 0 1440 68' enableBackground='new 0 0 1440 68'>
-              <path d='m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8' fill='#000' transform='translate(0-1977)'></path>
-            </svg>
+            <MainWaveTop className='bg-top curve' />
 
             <div className='content'>
               <h2>Projects</h2>
               <p>{lorem.generateParagraphs(5)}</p>
             </div>
 
-            <svg xmlns='http://www.w3.org/2000/svg' className='bg-bottom' viewBox='0 0 1440 68' enableBackground='new 0 0 1440 68'>
-              <path d='m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8' fill='#000' transform='translate(0-1977)'></path>
-            </svg>
+            <MainWaveBottom className='bg-bottom curve' />
           </section>
 
           <section id='contact'>
@@ -81,16 +80,14 @@ class App extends React.Component {
           </section>
         </section>
         <section className='footer' id='footer'>
-          <svg xmlns='http://www.w3.org/2000/svg'className='bg-top' viewBox='0 0 1440 68' enableBackground='new 0 0 1440 68'>
-            <path d='m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8' fill='#000' transform='translate(0-1977)'></path>
-          </svg>
+          <FooterWave className='curve' />
           <div className='content'>
             <div className='left'>
               <p>{lorem.generateSentences(2)}</p>
               <ul>
-                <li><a href={links.github}>GitHub</a></li>
-                <li><a href={links.linkedin}>LinkedIn</a></li>
-                <li><a href={links.twitter}>Twitter</a></li>
+                <li><a href={content.links.github}>GitHub</a></li>
+                <li><a href={content.links.linkedin}>LinkedIn</a></li>
+                <li><a href={content.links.twitter}>Twitter</a></li>
               </ul>
             </div>
             <div className='center'>
