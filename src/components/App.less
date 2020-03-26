@@ -1,5 +1,6 @@
 @import '../styles/colors';
 @import '../styles/typo';
+@import '../styles/layout';
 
 .app {
   display: grid;
@@ -9,7 +10,6 @@
     'hd hd hd   hd   hd   hd   hd   hd   hd'
     'main main main main main main main main main'
     'ft ft ft   ft   ft   ft   ft   ft   ft';
-  gap: 10px 10px;
 
   @bg-width: 1920px;
   @bg-height: 886px;
@@ -84,6 +84,7 @@
     }
 
     .circle-left {
+      .no-select();
       position: absolute;
       height: .height-relative(@bg-width, 350)[@result];
       top: .height-relative(@bg-width, 370)[@result];
@@ -91,11 +92,11 @@
     }
 
     .circle-right {
+      .no-select();
       position: absolute;
       height: .height-relative(@bg-width, 400px)[@result];
       top: .height-relative(@bg-width, 200px)[@result];
       right: 0;
-      z-index: 1;
     }
   }
 
@@ -103,15 +104,18 @@
     grid-area: sd;
   }
 
+  @page-padding-horizontal: 100px;
+  @page-padding-vertical: 100px;
+
   .main {
     grid-area: main;
-    overflow-y: scroll;
 
-    @section-padding-horizontal: 100px;
-    @section-padding-vertical: 100px;
+    @section-padding-horizontal: @page-padding-horizontal;
+    @section-padding-vertical: @page-padding-vertical;
 
     section {
       padding-top: @section-padding-vertical;
+      @curve-height: 100px;
       text-align: justify;
 
       .content > * {
@@ -138,18 +142,25 @@
 
       &#projects {
         .right();
+        padding-bottom: @curve-height;
 
         svg {
-          position: relative;
           display: block;
           z-index: 5;
+          width: 100%;
+          height: @curve-height;
 
           path {
             fill: @color-background;
+            height: 100%;
           }
 
           &.bg-top {
             transform: scale(-1);
+          }
+
+          &.bg-bottom {
+            float: right;
           }
         }
 
@@ -158,8 +169,8 @@
           background: linear-gradient(41deg, @color-primary-darker, @color-primary);
           padding-top: 150px;
           padding-bottom: 150px;
-          margin-top: -70px;
-          margin-bottom: -70px;
+          margin-top: -@curve-height;
+          margin-bottom: -@curve-height;
 
           h2 {
             text-align: right;
@@ -175,8 +186,48 @@
 
   .footer {
     grid-area: ft;
+    @curve-height: 100px;
+    padding-top: @curve-height;
 
-    background: @color-primary-light
+    .content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas: 'left center right';
+      column-gap: 50px;
+      padding: @page-padding-vertical @page-padding-horizontal;
+      background: linear-gradient(41deg, @color-primary, @color-primary-lighter);
+      padding-top: 170px;
+      margin-top: -@curve-height;
+
+      .left {
+        grid-area: left;
+      }
+
+      .center {
+        grid-area: center;
+      }
+
+      .right {
+        grid-area: right;
+      }
+    }
+
+    svg {
+      display: block;
+      z-index: 5;
+      width: 100%;
+      height: @curve-height;
+
+      path {
+        fill: @color-background;
+        height: 100%;
+      }
+
+      &.bg-top {
+        transform: scale(-1);
+      }
+    }
   }
 }
 
@@ -189,6 +240,18 @@
       'hd   hd   hd   hd   hd   hd'
       'main main main main main main'
       'ft   ft   ft   ft   ft   ft';
+
+    .main {
+      section {
+        .content > * {
+          width: 100%;
+        }
+
+        h2 {
+          text-align: left;
+        }
+      }
+    }
   }
 }
 
@@ -201,6 +264,15 @@
       'hd   hd   hd'
       'main main main '
       'ft   ft   ft';
+
+    .footer {
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'left'
+        'center'
+        'right';
+    }
   }
 }
 
@@ -208,11 +280,5 @@
 // Small
 @media screen and (max-width: 768px) {
   .app {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    grid-template-areas:
-      'hd   hd   hd'
-      'main main main '
-      'ft   ft   ft';
   }
 }
