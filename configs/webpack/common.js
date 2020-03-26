@@ -32,11 +32,35 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif)$/,
         loader: 'file-loader',
         options: {
           name: 'images/[name].[hash].[ext]'
         }
+      },
+      {
+        test: /\.svg$/,
+        oneOf: [
+          {
+            issuer: /\.(jsx|tsx)$/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  jsx: true
+                }
+              },
+            ]
+          },
+          {
+            issuer: /\.(css|less)$/,
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[hash].[ext]'
+            },
+          },
+        ]
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
