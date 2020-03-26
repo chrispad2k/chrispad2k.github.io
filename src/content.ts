@@ -21,7 +21,7 @@ export default {
   },
   main: {
     about: {
-      text: 'I was born in Vienna and i am actually pretty cool!'
+      text: lorem.generateParagraphs(5)
     }
   },
   links: {
