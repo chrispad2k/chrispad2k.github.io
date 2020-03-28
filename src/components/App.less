@@ -2,6 +2,15 @@
 @import '../styles/typo';
 @import '../styles/layout';
 
+.height-relative(@width, @height) {
+  @result: 100vw * (@height/@width);
+}
+
+.drop-shadow {
+  -webkit-filter: drop-shadow( 4px 4px 30px rgba(#363C70, 0.5));
+  filter: drop-shadow( 4px 4px 30px rgba(#363C70, 0.5));
+}
+
 .app {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
@@ -13,10 +22,6 @@
 
   @page-padding-horizontal: 100px;
   @page-padding-vertical: 100px;
-
-  .height-relative(@width, @height) {
-    @result: 100vw * (@height/@width);
-  }
 
   svg.curve {
     display: block;
@@ -33,32 +38,35 @@
 
   .header {
     grid-area: hd;
-    background: url('../../public/images/bg.svg') no-repeat;
-    background-size: 100% auto;
     overflow: hidden;
 
     @bg-width: 1920px;
     @bg-height: 886px;
+    @padding-sides: 50px;
     @padding-top: 50px;
     padding-top: @padding-top;
 
-    height: .height-relative(@bg-width, @bg-height)[@result];
+    height: calc(.height-relative(@bg-width, @bg-height)[@result]);
 
-    @top-height: 4em;
+    @top-height: 7vh;
 
     .logo {
       .light();
       position: absolute;
-      left: 50px;
+      top: @padding-top;
+      left: @padding-sides;
       height: @top-height;
+      line-height: @top-height;
       font-weight: bold;
       align-self: center;
       margin: 0;
     }
 
     nav {
+      .serif();
       position: absolute;
-      right: 50px;
+      top: @padding-top;
+      right: @padding-sides;
       height: @top-height;
 
       ul {
@@ -75,7 +83,7 @@
 
           a {
             font-size: 1.4em;
-            padding: 0 1em;
+            padding: 0 0.7em;
             white-space: nowrap;
           }
         }
@@ -98,20 +106,13 @@
       }
     }
 
-    .circle-left {
-      .no-select();
+    .bg {
       position: absolute;
-      height: .height-relative(@bg-width, 350)[@result];
-      top: .height-relative(@bg-width, 370)[@result];
-      left: 0;
+      top: 0;
     }
 
-    .circle-right {
-      .no-select();
-      position: absolute;
-      height: .height-relative(@bg-width, 400px)[@result];
-      top: .height-relative(@bg-width, 200px)[@result];
-      right: 0;
+    .bg-mobile {
+      visibility: hidden;
     }
   }
 
@@ -151,6 +152,7 @@
 
       &#about {
         .left();
+        z-index: 100;
       }
 
       &#projects {
@@ -158,6 +160,7 @@
 
         svg.curve {
           height: @curve-height;
+          // .drop-shadow();
         }
 
         .content {
@@ -212,6 +215,7 @@
 
     svg.curve {
       height: @curve-height;
+      // .drop-shadow();
     }
   }
 }
@@ -227,7 +231,33 @@
       'ft   ft   ft   ft   ft   ft';
 
     .header {
-      .text {
+      overflow: hidden;
+
+      @bg-width: 1200px;
+      @bg-height: 700px;
+      @padding-top: 20px;
+      @padding-sides: 50px;
+      padding-top: @padding-top;
+      height: calc(.height-relative(@bg-width, @bg-height)[@result]);
+
+      @top-height: 7vh;
+
+      .logo {
+        height: @top-height
+      }
+
+      nav {
+        .light();
+        height: @top-height;
+      }
+
+      .bg-mobile {
+        visibility: visible;
+        position: absolute;
+        top: 0;
+      }
+
+      .bg, .text {
         visibility: hidden;
       }
     }

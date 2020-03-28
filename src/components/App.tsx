@@ -2,8 +2,8 @@ import React from 'react'
 import { LoremIpsum } from 'lorem-ipsum'
 import './App.less'
 import content from '../content'
-import CircleLeft from '../../public/images/circle-left.svg'
-import CircleRight from '../../public/images/circle-right.svg'
+import Header from '../../public/images/header.svg'
+import HeaderMobile from '../../public/images/header-mobile.svg'
 import MainWaveTop from '../../public/images/main-wave-top.svg'
 import MainWaveBottom from '../../public/images/main-wave-bottom.svg'
 import FooterWave from '../../public/images/footer-wave.svg'
@@ -25,17 +25,15 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-    // this.updateMain = this.updateMain.bind(this)
-    // this.projectContentBgTop = React.createRef()
-    // this.projectContentBgBottom = React.createRef()
   }
 
   render() {
     return (
       <div className='app'>
         <section className='header' id='header'>
-          <CircleLeft className='circle-left' />
-          <CircleRight className='circle-right' />
+          <Header className='bg' />
+          <HeaderMobile className='bg-mobile' />
+
 
           <h1 className='logo'>{content.header.logo}</h1>
 
@@ -110,27 +108,6 @@ class App extends React.Component {
       </div>
     )
   }
-
-  // componentDidMount() {
-  //   window.addEventListener('resize', this.updateMain)
-  //   this.updateMain()
-  // }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.updateMain)
-  // }
-
-  // updateMain() {
-  //   const bgTopHeight = this.projectContentBgTop.current.getBoundingClientRect().height
-  //   const bgBottomHeight = this.projectContentBgBottom.current.getBoundingClientRect().height
-  //   console.log(bgBottomHeight)
-  //   this.setState({
-  //     projectContentStyle: {
-  //       marginTop: bgTopHeight * -1 + 'px',
-  //       marginBottom: bgBottomHeight * -1 + 'px',
-  //     }
-  //   })
-  // }
 }
 
 export default App
