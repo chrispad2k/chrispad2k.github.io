@@ -11,6 +11,9 @@
   filter: drop-shadow( 4px 4px 30px rgba(#363C70, 0.5));
 }
 
+@page-padding-horizontal: 4vw;
+@page-padding-vertical: 100px;
+
 .app {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
@@ -20,12 +23,11 @@
     'main main main main main main main main main'
     'ft ft ft   ft   ft   ft   ft   ft   ft';
 
-  @page-padding-horizontal: 100px;
-  @page-padding-vertical: 100px;
-
+  @curve-height: 200px;
   svg.curve {
     display: block;
     overflow: hidden;
+    height: @curve-height;
     position: relative;
     left: 50%;
     transform: translate(-50%);
@@ -39,13 +41,11 @@
   .header {
     grid-area: hd;
     overflow: hidden;
-
+    position: relative;
     @bg-width: 1920px;
     @bg-height: 886px;
-    @padding-sides: 50px;
     @padding-top: 50px;
     padding-top: @padding-top;
-
     height: calc(.height-relative(@bg-width, @bg-height)[@result]);
 
     @top-height: 7vh;
@@ -54,7 +54,7 @@
       .light();
       position: absolute;
       top: @padding-top;
-      left: @padding-sides;
+      left: @page-padding-horizontal;
       height: @top-height;
       line-height: @top-height;
       font-weight: bold;
@@ -66,7 +66,7 @@
       .serif();
       position: absolute;
       top: @padding-top;
-      right: @padding-sides;
+      right: @page-padding-horizontal;
       height: @top-height;
 
       ul {
@@ -83,8 +83,19 @@
 
           a {
             font-size: 1.4em;
-            padding: 0 0.7em;
+            margin: 0 0.5em;
+            padding: 0.5em;
             white-space: nowrap;
+            overflow: hidden;
+            background-image: linear-gradient(120deg, @color-primary-lighter, @color-primary-lighter);
+            background-repeat: no-repeat;
+            background-size: 100% 0.2em;
+            background-position: bottom center;
+            transition: background-size 0.25s ease-in;
+
+            &:hover {
+              background-size: 100% 100%;
+            }
           }
         }
       }
@@ -109,15 +120,13 @@
     .bg {
       position: absolute;
       top: 0;
+      z-index: -1;
     }
 
     .bg-mobile {
       visibility: hidden;
+      z-index: -1;
     }
-  }
-
-  .sidebar {
-    grid-area: sd;
   }
 
   .main {
@@ -128,7 +137,6 @@
 
     section {
       padding-top: @section-padding-vertical;
-      @curve-height: 200px;
       text-align: justify;
       overflow: hidden;
 
@@ -158,11 +166,6 @@
       &#projects {
         .right();
 
-        svg.curve {
-          height: @curve-height;
-          // .drop-shadow();
-        }
-
         .content {
           .light();
           background: linear-gradient(41deg, @color-primary-darker, @color-primary);
@@ -185,9 +188,8 @@
 
   .footer {
     grid-area: ft;
-    @curve-height: 154px;
-    padding-top: 100px;
     overflow: hidden;
+    padding-top: @page-padding-vertical;
 
     .content {
       display: grid;
@@ -212,16 +214,13 @@
         grid-area: right;
       }
     }
-
-    svg.curve {
-      height: @curve-height;
-      // .drop-shadow();
-    }
   }
 }
 
 // Large
 @media screen and (max-width: 1200px) {
+  @page-padding-vertical: 0px;
+
   .app {
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: auto;
@@ -231,30 +230,33 @@
       'ft   ft   ft   ft   ft   ft';
 
     .header {
-      overflow: hidden;
+      @header-height: 370px;
+      @padding-top: 3vw;
 
-      @bg-width: 1200px;
-      @bg-height: 700px;
-      @padding-top: 20px;
-      @padding-sides: 50px;
       padding-top: @padding-top;
-      height: calc(.height-relative(@bg-width, @bg-height)[@result]);
+      height: @header-height;
 
       @top-height: 7vh;
 
       .logo {
-        height: @top-height
+        position: static;
+        text-align: center;
       }
 
       nav {
         .light();
-        height: @top-height;
+        position: static;
+        text-align: center;
       }
 
       .bg-mobile {
         visibility: visible;
         position: absolute;
         top: 0;
+        left: 50%;
+        height: 100%;
+        overflow: hidden;
+        transform: translate(-50%);
       }
 
       .bg, .text {
@@ -264,6 +266,9 @@
 
     .main {
       section {
+        @curve-height: 200px;
+        padding-top: @page-padding-vertical;
+
         .content > * {
           width: 100%;
         }
@@ -285,22 +290,7 @@
       'hd   hd   hd'
       'main main main '
       'ft   ft   ft';
-
-    @page-padding-horizontal: 50px;
     @page-padding-vertical: 50px;
-
-    .main {
-      @section-padding-horizontal: @page-padding-horizontal;
-      @section-padding-vertical: @page-padding-vertical;
-
-      section {
-        padding-top: @section-padding-vertical;
-
-        .content > * {
-          padding: 0 @section-padding-horizontal;
-        }
-      }
-    }
 
     .footer {
       .content {
@@ -310,7 +300,7 @@
           'left'
           'center'
           'right';
-        padding: @page-padding-vertical @page-padding-horizontal;
+
         padding-top: 200px;
       }
     }
