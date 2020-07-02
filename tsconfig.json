@@ -1,20 +1,15 @@
 {
   "compilerOptions": {
-    "outDir": "./build/",
+    "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
-    "lib": [
-      "es5",
-      "es6",
-      "dom"
-    ]
+    "allowJs": true,
+    "lib": ["es5", "es6", "dom"]
   },
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"]
 }
