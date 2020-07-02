@@ -7,6 +7,7 @@ import HeaderMobile from '../../../public/images/header-mobile.svg'
 import MainWaveTop from '../../../public/images/main-wave-top.svg'
 import MainWaveBottom from '../../../public/images/main-wave-bottom.svg'
 import FooterWave from '../../../public/images/footer-wave.svg'
+import profilePicture from '../../../public/images/profilePicture.jpeg'
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -18,6 +19,22 @@ const lorem = new LoremIpsum({
     min: 4,
   },
 })
+
+function Links() {
+  return (
+    <ul>
+      <li>
+        <a href={content.links.github}>GitHub</a>
+      </li>
+      <li>
+        <a href={content.links.linkedin}>LinkedIn</a>
+      </li>
+      <li>
+        <a href={content.links.twitter}>Twitter</a>
+      </li>
+    </ul>
+  )
+}
 
 export default function App(): JSX.Element {
   return (
@@ -45,13 +62,14 @@ export default function App(): JSX.Element {
         <div className="text">
           <h2>{content.header.intro.header}</h2>
           <p>{content.header.intro.text}</p>
+          <img className="profilePicture" src={profilePicture} />
         </div>
       </section>
       {/* <div className='sidebar' id='sidebar' /> */}
       <section className="main" id="main">
         <section id="about">
           <div className="content">
-            <h2>About Me</h2>
+            <h2>{content.main.about.header}</h2>
             <p>{content.main.about.text}</p>
           </div>
         </section>
@@ -70,7 +88,8 @@ export default function App(): JSX.Element {
         <section id="contact">
           <div className="content">
             <h2>Contact</h2>
-            <p>{lorem.generateParagraphs(3)}</p>
+            <p>Christoph Pader (chrispad2k@gmail.com)</p>
+            <Links />
           </div>
         </section>
       </section>
@@ -79,17 +98,7 @@ export default function App(): JSX.Element {
         <div className="content">
           <div className="left">
             <p>{lorem.generateSentences(2)}</p>
-            <ul>
-              <li>
-                <a href={content.links.github}>GitHub</a>
-              </li>
-              <li>
-                <a href={content.links.linkedin}>LinkedIn</a>
-              </li>
-              <li>
-                <a href={content.links.twitter}>Twitter</a>
-              </li>
-            </ul>
+            <Links />
           </div>
           <div className="center">
             <p>{lorem.generateSentences(2)}</p>
