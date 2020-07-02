@@ -37,11 +37,20 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack', 'url-loader'],
+        oneOf: [
+          {
+            issuer: /\.(ts|tsx)$/,
+            use: '@svgr/webpack',
+          },
+          {
+            issuer: /\.(css|less)$/,
+            use: 'url-loader',
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: 'url-loader',
+        use: 'url-loader',
       },
     ],
   },
