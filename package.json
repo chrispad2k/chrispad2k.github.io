@@ -8,11 +8,10 @@
     "start": "npm run dev",
     "dev": "webpack-dev-server --config=webpack/dev.js",
     "prod": "npm run build",
-    "build": "webpack -p --config=webpack/prod.js",
-    "rebuild": "npm run clean && npm run build",
+    "clean": "rimraf build/*",
+    "build": "npm run clean && webpack -p --config=webpack/prod.js",
     "test": "jest --coverage --watchAll --config=jest.json",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix",
-    "clean": "rimraf build/*",
     "deploy": "gh-pages -d build -b master",
     "predeploy": "npm run build"
   },
