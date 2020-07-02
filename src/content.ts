@@ -15,18 +15,18 @@ export default {
   header: {
     logo: 'Christoph Pader',
     intro: {
-      header: 'I\'m a enthusiastic Software Architect and Web Designer',
-      text: lorem.generateSentences(2)
-    }
+      header: "I'm a enthusiastic Software Architect and Web Designer",
+      text: lorem.generateSentences(2),
+    },
   },
   main: {
     about: {
-      text: lorem.generateParagraphs(5)
-    }
+      text: lorem.generateParagraphs(5),
+    },
   },
   links: {
     github: 'https://github.com/chrispad2k',
     linkedin: 'https://www.linkedin.com/in/christoph-pader-6ab7ba142',
-    twitter: 'https://twitter.com/chrispad2k'
+    twitter: 'https://twitter.com/chrispad2k',
   },
 }

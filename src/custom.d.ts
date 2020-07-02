@@ -1,9 +1,11 @@
+type SvgrComponent = React.StatelessComponent<React.SVGAttributes<SVGElement>>
+
 declare module '*.svg' {
-  const content: string
-  export default content
+  const value: SvgrComponent
+  export default value
 }
 
 declare module '*.json' {
-  const content: object
+  const content: Record<string, unknown>
   export default content
 }
